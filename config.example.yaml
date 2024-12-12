@@ -1,0 +1,14 @@
+dids:
+  - &me "<your DID here>"
+
+listRefs:
+  - &myList
+    did: &me
+    rkey: "<rkey of the list>"
+
+lists:
+  - name: Blocked by bsky.app
+    did: "<your DID here>"
+    rkey: <rkey of your list>
+    entries:
+      blockedBy: "did:plc:z72i7hdynmk6r22z27h6tvur"
