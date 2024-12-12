@@ -2,10 +2,12 @@
 
 This a template repository for setting up the list updater. Click "Use this template" button above to create your own copy.
 
+This repository contains only a GitHub Workflow and an example configuration file. The actual code lives in https://github.com/bsky-watch/list-updater.
+
 ## Configuration
 
 Copy `config.example.yaml` to `config.yaml` and customize as needed. List of all
-available knobs is provided in a schema file in the github.com/bsky-watch/list-labeler repo.
+available knobs is provided in a schema file in the https://github.com/bsky-watch/list-updater repo.
 
 ## Credentials
 
