@@ -17,3 +17,17 @@ Credentials are provided using GitHub Secrets. Each account is stored in a separ
 
 It is started automatically via GitHub Actions. You can view and adjust the
 workflow in `.github/workflows/run.yaml` file. By default it will run every 3 hours. Note that GitHub Actions provide a [free quota](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-actions/about-billing-for-github-actions#included-storage-and-minutes) of 2000 minutes per month. If, with your configuration file, a single run takes less than 8 minutes - it should fit nicely into that free quota. If it takes longer - you can reduce the frequency and/or set up a self-hosted runner.
+
+## Accuracy
+
+Where possible, it uses low-level `com.atproto.repo.listRecords` method to get
+the list of entries. For things that require records from many different
+accounts (e.g., a list of followers) it sends a query to AppView instead, and
+AppView may take blocks into account and not return you a complete list.
+
+You can minimize the possible impact of that by ensuring that your `DEFAULT` account is not discoverable:
+
+1) create a new Bluesky account that has no public association to you or the lists you plan to add
+2) do not use that account for anything else
+3) from time to time check the log of a run in the Actions tab, to ensure that
+  DID or handle of that account don't appear there.
