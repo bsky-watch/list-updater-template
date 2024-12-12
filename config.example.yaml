@@ -3,7 +3,7 @@ dids:
 
 listRefs:
   - &myList
-    did: &me
+    did: *me
     rkey: "<rkey of the list>"
 
 lists:
