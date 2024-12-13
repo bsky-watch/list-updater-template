@@ -1,14 +1,32 @@
 dids:
   - &me "<your DID here>"
 
-listRefs:
-  - &myList
-    did: *me
-    rkey: "<rkey of the list>"
-
 lists:
   - name: Blocked by bsky.app
-    did: "<your DID here>"
-    rkey: <rkey of your list>
+    did: *me
+    rkey: "<rkey of your list>"
+    # General format for `entries` is:
+    # entries:
+    #   <set>
+    #
+    # <set> can be different things:
+    #
+    # a) Union of other sets (i.e., merging them all together):
+    #   union:
+    #     - <set>
+    #     - <set>
+    #     - ...
+    # b) Difference (from the left set remove entries that are in the right set):
+    #   difference:
+    #     left:
+    #       <set>
+    #     right:
+    #       <set>
+    # c) Literal DID:
+    #   did: "did:plc:..."
+    # d) Any of the number of implemented options that query Bluesky: follows,
+    # followers, blocks, entries of another list, etc.
+    # For the complete list see https://github.com/bsky-watch/list-updater/blob/main/schema.yaml
+    # and/or https://github.com/bsky-watch/list-updater/blob/main/config/config.go#L19
     entries:
       blockedBy: "did:plc:z72i7hdynmk6r22z27h6tvur"
