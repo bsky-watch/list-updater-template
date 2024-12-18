@@ -13,6 +13,14 @@ available knobs is provided in a schema file in the https://github.com/bsky-watc
 
 Credentials are provided using GitHub Secrets. Each account is stored in a separate secret, with the value of "`<login>:<app-password>`". Having a secret named `DEFAULT` is required - this account will be used for API queries.
 
+## Bluesky's rate limits
+
+One account is only allowed to create about 11000 records a day. (Each list entry counts as a separate record.) After that limit is reached, the account effectively becomes read-only for the rest of the day. 
+
+List updater respects the rate limits and will not keep hammering Bluesky with pointless requests if it detects that it's being throttled, but it has no safeguards against exhausting the daily record creation quota. So if you anticipate adding a lot of list entries - be ready for that. 
+
+You can create a separate account to host the list, to avoid making your main one read-only. If you do - be sure to clearly link it in the bio of your main account and the other way around, so that subscribers can verify that it indeed belongs to you.
+
 ## How/where does it run?
 
 It is started automatically via GitHub Actions. You can view and adjust the
